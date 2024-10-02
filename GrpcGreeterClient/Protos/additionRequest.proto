@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcGreeeterClient";
+
+package greet;
+
+message AdditionRequest
+{
+  int32 a = 1;
+  int32 b = 2;
+}

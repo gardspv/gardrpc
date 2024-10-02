@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+import "Protos/additionRequest.proto";
+
+option csharp_namespace = "GrpcGreeeterClient";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc Add (AdditionRequest) returns (AdditionReply);
+}
+
+service Calculator {
+  rpc Add (AdditionRequest) returns (AdditionReply);
+  rpc SumList (SumListRequest) returns (SumListReply);
+  rpc AddCoordinates (AddCoordinatesRequest) returns (AddCoordinatesReply);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
+
+message AdditionReply
+{
+  int32 result = 1;
+}
+
+message SumListRequest
+{
+  repeated int32 numbers = 1;
+}
+
+message SumListReply
+{
+  int32 result = 1;
+}
+
+message AddCoordinatesRequest {
+  map<string, int32> A = 1;
+  map<string, int32> B = 2;
+}
+
+message AddCoordinatesReply {
+  map<string, int32> result = 1;
+}
+  
