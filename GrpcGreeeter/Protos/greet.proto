@@ -16,6 +16,11 @@
   service Calculator {
     rpc Add (AdditionRequest) returns (AdditionReply);
     rpc SumList (SumListRequest) returns (SumListReply);
+    
+    /**
+    * Takes two maps of coordinates <string, int32>, both with entries X and Y, add X and Y togethere respectively and return a map with
+    the result. Only nonnegative int32 are allowed.
+    */
     rpc AddCoordinates (AddCoordinatesRequest) returns (AddCoordinatesReply);
   }
   

@@ -34,9 +34,7 @@ public class CalculatorService(ILogger<GreeterService> logger,
     }
     
     public override async Task<AddCoordinatesReply> AddCoordinates(AddCoordinatesRequest request, ServerCallContext context)
-    {
-        await validationService.ValidateGrpcRequest(request);
-        
+    { 
         var coorA = request.A.ToDictionary();
         var coorB = request.B.ToDictionary();
 

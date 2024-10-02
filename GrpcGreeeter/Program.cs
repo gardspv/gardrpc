@@ -1,11 +1,17 @@
 using FluentValidation;
+using GrpcGreeeter.Interceptors;
 using GrpcGreeeter.Services;
 using GrpcGreeeter.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddGrpc();
+builder.Services.AddGrpc(
+    options =>
+    {
+        //Interceptor that applies a fluent validation validator to a request if it defined
+        options.Interceptors.Add<ValidationInterceptor>();
+    });
 builder.Services.AddValidatorsFromAssemblyContaining<CoordinateValidator>(ServiceLifetime.Singleton);
 builder.Services.AddSingleton<ValidationService>();
 
